@@ -1,4 +1,4 @@
-# photo-tool-Anh Thịnh+ Nhật Qúy
+# photo-tool-AnhThinh-NhqtQuy
 Photo Tool 
 
-Tác Gỉa: Tôi
+Tác Giả: Tôi
