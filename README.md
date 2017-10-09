@@ -1,4 +1,4 @@
-# photo-tool-AnhThinh-NhqtQuy
+# photo-tool-AnhThinh-NhatQuy
 Photo Tool 
 
 Tác Giả: Tôi
