@@ -83,6 +83,10 @@
       <Project>{979163f8-62cb-4314-9c70-c905c9a1551e}</Project>
       <Name>MyPhotoAlbum</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyPhotoControls\MyPhotoControls.csproj">
+      <Project>{86abbe3c-6f90-4061-8323-3017ff37ae7b}</Project>
+      <Name>MyPhotoControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

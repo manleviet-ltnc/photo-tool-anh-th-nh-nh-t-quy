@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 
-namespace Mainning.MyPhotoAlbum
+namespace Manning.MyPhotoAlbum
 {
     public class AlbumManager
     {

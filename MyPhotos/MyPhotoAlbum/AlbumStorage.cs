@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Mainning.MyPhotoAlbum
+namespace Manning.MyPhotoAlbum
 {
        public class AlbumStorageException : Exception
         {
@@ -28,7 +28,7 @@ namespace Mainning.MyPhotoAlbum
                 sw.WriteLine(CurrentVersion.ToString());
 
                 foreach (Photograph p in album)
-                    sw.WriteLine(p);
+                    WritePhoto(sw, p);
 
                 album.HasChanged = false;
             }
@@ -48,7 +48,7 @@ namespace Mainning.MyPhotoAlbum
             sw.WriteLine(p.FileName);
 
             sw.WriteLine(p.Caption != null ? p.Caption : "");
-            sw.WriteLine(p.DateTeken.ToString());
+            sw.WriteLine(p.DateTaken.ToString());
             sw.WriteLine(p.Photographer != null ? p.Photographer : "");
             sw.WriteLine(p.Notes != null ? p.Notes : "");
         }
@@ -106,7 +106,7 @@ namespace Mainning.MyPhotoAlbum
             Photograph p = new Photograph(file);
 
             p.Caption = sr.ReadLine();
-            p.DateTeken = DateTime.Parse(sr.ReadLine());
+            p.DateTaken = DateTime.Parse(sr.ReadLine());
             p.Photographer = sr.ReadLine();
             p.Notes = sr.ReadLine();
 

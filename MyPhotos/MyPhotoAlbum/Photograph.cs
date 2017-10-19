@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Mainning.MyPhotoAlbum
+namespace Manning.MyPhotoAlbum
 {
     /// <summary>
     /// The photograph class represent a photographic
@@ -58,15 +58,15 @@ namespace Mainning.MyPhotoAlbum
             }
         }
 
-        private DateTime _dateTeken = DateTime.Now;
-        public DateTime DateTeken
+        private DateTime _dateTaken = DateTime.Now;
+        public DateTime DateTaken
         {
-            get { return _dateTeken; }
+            get { return _dateTaken; }
             set
             {
-                if (_dateTeken != value)
+                if (_dateTaken != value)
                 {
-                    _dateTeken = value;
+                    _dateTaken = value;
                     HasChanged = true;
                 }
             }
