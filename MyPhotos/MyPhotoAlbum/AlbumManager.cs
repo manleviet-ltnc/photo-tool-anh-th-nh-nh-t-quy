@@ -16,19 +16,35 @@ namespace Manning.MyPhotoAlbum
             get { return _defaultPath; }
             set { _defaultPath = value; }
         }
-
         private string _pwd;
         public string Password
         {
             get { return _pwd; }
-            set { _pwd = value; }
+            set
+            {
+                _pwd = value;
+            }
         }
-
         static AlbumManager()
         {
             _defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Albums";
         }
+        public AlbumManager(string name) : this()
+        {
+            _name = name;
+            _album = AlbumStorage.ReadAlbum(name);
+            if (Album.Count > 0)
+                Index = 0;
+        }
 
+        public AlbumManager(string name, string pwd) : this()
+        {
+            _name = name;
+            _album = AlbumStorage.ReadAlbum(name, pwd);
+            Password = pwd;
+            if (Album.Count > 0)
+                Index = 0;
+        }
         private int _pos = -1;
         public int Index
         {
@@ -41,8 +57,8 @@ namespace Manning.MyPhotoAlbum
             }
             set
             {
-                if (value < 0 || value >= Album.Count)
-                    throw new IndexOutOfRangeException("The given index is out of bounds");
+                if (value  < 0 || value >= Album.Count)
+                    throw new IndexOutOfRangeException(" The given index is out of bounds");
                 _pos = value;
             }
         }
@@ -57,30 +73,25 @@ namespace Manning.MyPhotoAlbum
         {
             get
             {
-                if (String.IsNullOrEmpty(FullName))
+                if (string.IsNullOrEmpty(FullName))
                     return null;
-                else return Path.GetFileNameWithoutExtension(FullName);
+                else
+                    return Path.GetFileNameWithoutExtension(FullName);
             }
         }
+
         private PhotoAlbum _album;
         public PhotoAlbum Album
         {
             get { return _album; }
+
         }
 
         public AlbumManager()
         {
             _album = new PhotoAlbum();
-        }
 
-        public AlbumManager(string name): this()
-        {
-            _name = name;
-            _album = AlbumStorage.ReadAlbum(name);
-            if (Album.Count > 0)
-                Index = 0;
         }
-
         public Photograph Current
         {
             get
@@ -90,6 +101,7 @@ namespace Manning.MyPhotoAlbum
                 return Album[_pos];
             }
         }
+
 
         public Bitmap CurrentImage
         {
@@ -101,27 +113,30 @@ namespace Manning.MyPhotoAlbum
             }
         }
 
+
+
+
         static public bool AlbumExits(string name)
         {
             return File.Exists(name);
         }
-
         public void Save()
         {
             if (FullName == null)
-                throw new InvalidOperationException("Unable to save album with to name");
-            AlbumStorage.WriteAlbum(Album, FullName);
-        }
+                throw new InvalidOperationException("Unable to save album with no name");
+            AlbumStorage.WriteAlbum(Album, FullName, Password);
 
-        public void Save(string name, bool overwrite)
+        }
+        public void Save(string name, bool overwite)
         {
             if (name == null)
                 throw new ArgumentNullException("name");
-            if (name != FullName && AlbumExits(name) && !overwrite)
-                throw new AggregateException("An album with this name exists");
+            if (name != FullName && AlbumExits(name) && !overwite)
+                throw new ArgumentException(" An album with this name exists");
 
-            AlbumStorage.WriteAlbum(Album, name);
+            AlbumStorage.WriteAlbum(Album, name, Password);
             FullName = name;
+
         }
         public bool MoveNext()
         {
@@ -130,8 +145,8 @@ namespace Manning.MyPhotoAlbum
 
             Index++;
             return true;
-        }
 
+        }
         public bool MovePrev()
         {
             if (Index <= 0)
@@ -140,5 +155,8 @@ namespace Manning.MyPhotoAlbum
             Index--;
             return true;
         }
+
+
     }
+
 }
