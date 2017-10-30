@@ -38,9 +38,7 @@ namespace Manning.MyPhotoAlbum
                     cw.WriteLine(password);
                     sw = cw;
                 }
-                sw = new StreamWriter(path, false);
-                sw.WriteLine(CurrentVersion.ToString());
-
+                
                 // Save album properties
                 sw.WriteLine(album.Title);
                 sw.WriteLine(album.PhotoDescriptor.ToString());
@@ -183,7 +181,7 @@ namespace Manning.MyPhotoAlbum
             return p;
 
         }
-        static public bool IsEncryted(string path)
+        static public bool IsEncrypted(string path)
         {
             StreamReader sr = null;
             try

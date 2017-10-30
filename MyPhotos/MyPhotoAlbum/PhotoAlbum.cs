@@ -34,6 +34,18 @@ namespace Manning.MyPhotoAlbum
             }
         }
 
+        public string GetDescriptorFormat()
+        {
+            switch (PhotoDescriptor)
+            {
+                case DescriptorOption.Caption: return "c";
+                case DescriptorOption.DateTaken: return "d";
+                case DescriptorOption.FileName:
+                default:
+                    return "f";
+            }
+        }
+
         private string _pwd;
         public string Password
         {
