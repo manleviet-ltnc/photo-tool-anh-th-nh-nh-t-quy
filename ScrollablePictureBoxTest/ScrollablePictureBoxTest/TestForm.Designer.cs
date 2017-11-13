@@ -51,7 +51,7 @@
             "AutoSize",
             "CenterImage",
             "Normal",
-            "StrectchImage",
+            "StretchImage",
             "Zoom"});
             this.cmbSizeMode.Location = new System.Drawing.Point(93, 13);
             this.cmbSizeMode.Name = "cmbSizeMode";
@@ -62,7 +62,6 @@
             // 
             // spbxImage
             // 
-            this.spbxImage.AllowScrollBars = true;
             this.spbxImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
